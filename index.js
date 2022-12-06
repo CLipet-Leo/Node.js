@@ -40,12 +40,29 @@ app.get("/pokemon/list", function (req, res) {
       });
   });
   
-  app.post('/pokemon/insert', jsonParser, (req, res) => {
-    const body = req.body;
-    console.log('Got body:', body);
-    //on code ensuite l'insertion dans mongoDB, lisez la doc hehe !!
-    const dbConnect = dbo.getDb();
-    dbConnect.collection('Pokemon').insertOne({'name':'reptincele'});
-    res.json(body);
+app.post('/pokemon/insert', jsonParser, (req, res) => {
+  const body = req.body;
+  console.log('Got body:', body);
+  //on code ensuite l'insertion dans mongoDB, lisez la doc hehe !!
+  const dbConnect = dbo.getDb();
+  dbConnect.collection('Pokemon').insertOne({'name':'reptincele'});
+  res.json(body);
 });
 
+app.post('/pokemon/update', jsonParser, (req, res) => {
+  const body = req.body;
+  console.log('Got body:', body);
+  //on code ensuite l'insertion dans mongoDB, lisez la doc hehe !!
+  const dbConnect = dbo.getDb();
+  dbConnect.collection('Pokemon').find({'name':'reptincele'}).updateOne({'name':'dracaufeu'});
+  res.json(body);
+});
+
+app.post('/pokemon/delete', jsonParser, (req, res) => {
+  const body = req.body;
+  console.log('Got body:', body);
+  //on code ensuite l'insertion dans mongoDB, lisez la doc hehe !!
+  const dbConnect = dbo.getDb();
+  dbConnect.collection('Pokemon').deleteOne({'name':'dracaufeu'});
+  res.json(body);
+});
