@@ -48,3 +48,4 @@ app.get("/pokemon/list", function (req, res) {
     dbConnect.collection('Pokemon').insertOne({'name':'reptincele'});
     res.json(body);
 });
+
