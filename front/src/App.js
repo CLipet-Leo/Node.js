@@ -1,26 +1,6 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -35,17 +15,24 @@ import {
 function App(props){
   return <Router>
       <Switch>
-        <Route exact path="/"> {/*ici on met l'URL dans le navigateur*/}
+        <Route exact path="/"> {<Route path="/:id" children={<Home />} />/*ici on met l'URL dans le navigateur*/}
           <Home /> {/*ici on donne la page à afficher en fonction de cette URL*/}
         </Route>
-        <Route path="/about">
+        <Route path="/about"> {<Route path="pages/:id" children={<About />} />}
           <About />
         </Route>
-        <Route path="/dashboard">
+        <Route path="/dashboard"> {<Route path="pages/:id" children={<Dashboard />} />}
           <Dashboard />
         </Route>
       </Switch>
   </Router>
 }
+
+ReactDOM.render(
+  <BrowserRouter>
+    <Home />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
 
 export default App;
