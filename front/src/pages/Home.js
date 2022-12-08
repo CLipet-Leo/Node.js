@@ -1,8 +1,9 @@
 import Menu from "../components/nav";
 
 function Home(props){
-    return (<h1>Acceuil</h1>,
-    <div><Menu /></div>);
+    return <div><h1>Acceuil</h1>,
+        <Menu />
+    </div>;
 }
 
 
