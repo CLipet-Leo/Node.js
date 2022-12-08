@@ -15,7 +15,7 @@ import {
 function App(props){
   return <Router>
       <Switch>
-        <Route exact path="/"> {<Route path="/:id" children={<Home />} />/*ici on met l'URL dans le navigateur*/}
+        <Route exact path="/"> {<Route path="pages/:id" children={<Home />} />/*ici on met l'URL dans le navigateur*/}
           <Home /> {/*ici on donne la page à afficher en fonction de cette URL*/}
         </Route>
         <Route path="/about"> {<Route path="pages/:id" children={<About />} />}
