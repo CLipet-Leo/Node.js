@@ -4,8 +4,8 @@ function Menu(){
     return <nav>
         <ul>
             <li><Link to="../">Acceuil</Link></li>
-            <li><Link to="../About">À propos</Link></li>
-            <li><Link to="../Dashboard">Liste</Link></li>
+            <li><Link to="../About">Pokédex</Link></li>
+            <li><Link to="../Dashboard">Pokémons</Link></li>
         </ul>
     </nav>
 }
