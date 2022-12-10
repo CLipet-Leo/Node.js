@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Dashboard from "./pages/Dashboard";
+import Pokédex from "./pages/Pokédex";
+import Pokémons from "./pages/Pokémons";
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,11 +18,11 @@ function App(props){
         <Route exact path="/"> {<Route path="pages/:id" children={<Home />} />/*ici on met l'URL dans le navigateur*/}
           <Home /> {/*ici on donne la page à afficher en fonction de cette URL*/}
         </Route>
-        <Route path="/about"> {<Route path="pages/:id" children={<About />} />}
-          <About />
+        <Route path="/pokedex"> {<Route path="pages/:id" children={<Pokédex />} />}
+          <Pokédex />
         </Route>
-        <Route path="/dashboard"> {<Route path="pages/:id" children={<Dashboard />} />}
-          <Dashboard />
+        <Route path="/pokemons"> {<Route path="pages/:id" children={<Pokémons />} />}
+          <Pokémons />
         </Route>
       </Switch>
   </Router>

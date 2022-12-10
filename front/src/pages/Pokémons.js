@@ -2,7 +2,7 @@ import Menu from "../components/nav";
 import { useState,useEffect,} from "react";
 import { getAll,addToPokedex } from "../api/pokemon";
 
-function Dashboard(props) {
+function Pokémons(props) {
   const [pokemons, setPokemons] = useState([]);
 
   //va s'executer seulement au lancement du composant (dep: [])
@@ -14,8 +14,8 @@ function Dashboard(props) {
       .catch(error => console.error("Erreur avec notre API :", error.message));
   }, []);
 
-  return <div><h1>Liste des pokémons</h1>,
-    <Menu />,
+  return <div><h1>Liste des pokémons</h1>
+    <Menu />
     <div className="pokemon-list">
       <div class="flex">
         {pokemons.map((pokemon, key) => {
@@ -24,11 +24,11 @@ function Dashboard(props) {
             <h2>{pokemon.name}</h2>
             <button onClick={()=>addToPokedex(pokemon._id)}>Capturer !</button>
           </div>
-        })};
+        })}
       </div>
     </div>
 
   </div>;
 }
 
-export default Dashboard;
+export default Pokémons;
