@@ -1,9 +1,9 @@
 export const getAll = async () => {
     const response = await fetch(
-        'http://localhost:4444/pokemon/list', {
+        'http://localhost:4444/Pokemon/list', {
             method: 'GET', 
             headers: {
-                'Accept': 'application/json', 
+                'Accept': 'application/json',
                 'Content-Type':'application/json'
             }
         }

@@ -1,28 +1,33 @@
 import Menu from "../components/nav";
+import { useState,useEffect,} from "react";
+import { getAll } from "../api/pokemon";
 
-const [ pokemons, setPokemons ] = useState([]);
+function Dashboard(props) {
+  const [pokemons, setPokemons] = useState([]);
 
-// va s'executer seulement au lancement du composant (dep: [])
-useEffect(() => {
-  // récupérer la liste des users seulement au chargement du composant ! 
-  const pokemonsFetched = getAll();
-  setPokemons(pokemonsFetched);
-},[]);
+  //va s'executer seulement au lancement du composant (dep: [])
+  useEffect(() => {
+    // récupérer la liste des users seulement au chargement du composant ! 
+    const pokemonsFetched = getAll();
+    pokemonsFetched
+      .then(result => setPokemons(result))
+      .catch(error => console.error("Erreur avec notre API :", error.message));
+  }, []);
 
-function Dashboard(props){
-    return <div><h1>Liste des pokémons</h1>,
-    <Menu />
+  return <div><h1>Liste des pokémons</h1>,
+    <Menu />,
     <div className="pokemon-list">
       <div class="flex">
-       {pokemons.map((pokemon,key) =>{
+        {pokemons.map((pokemon, key) => {
           return <div key={key} className="bloc-pokemon">
-            <img className="avatar" src={pokemon.img} />
+            {/* <img className="avatar" src={pokemon.img} /> */}
             <h2>{pokemon.name}</h2>
-            <button onClick={()=>addToPokedex(pokemon._id)}>Capturer !</button>
+            {/* <button onClick={()=>addToPokedex(pokemon._id)}>Capturer !</button> */}
           </div>
         })};
       </div>
     </div>
+
   </div>;
 
 }
