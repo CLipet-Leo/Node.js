@@ -103,9 +103,9 @@ app.get("/pokedex/list", function (req, res) {
 
 app.post('/pokedex/insert', jsonParser, (req, res) => {
   const body = req.body;
-  console.log('Got body:', body);
   const dbConnect = dbo.getDb();
   const pokemon = dbConnect.collection('Pokedex')
+  console.log('Added:', pokemon._id, 'to pokedex');
   pokemon.insertOne(body)
     .then(function (err, result){
       if (err) {
