@@ -1,5 +1,4 @@
 var cors = require('cors')
-app.use(cors())
 
 const express = require("express");
 const dbo = require("./db/db");
@@ -7,6 +6,7 @@ const app = express();
 const port = 4444;
 
 dbo.connectToServer();
+app.use(cors())
 
 //insert function
 const bodyParser = require('body-parser');
