@@ -45,8 +45,8 @@ export const getPokedex = async (pokemon) => {
 
 export const delPokedex = async (pokemon) => {
     const response = await fetch(
-        'http://localhost:4444/pokedex/list', {
-        method: 'GET',
+        'http://localhost:4444/pokedex/delete', {
+        method: 'DEL',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

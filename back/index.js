@@ -111,7 +111,6 @@ app.post('/pokedex/insert', jsonParser, (req, res) => {
 
 app.post('/pokedex/delete', jsonParser, (req, res) => {
   const body = req.body;
-  console.log('Got body:', body);
   const dbConnect = dbo.getDb();
   const pokemon = dbConnect.collection('Pokedex');
   pokemon.deleteOne({...body})
