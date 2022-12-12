@@ -84,7 +84,7 @@ app.post('/pokemon/delete', jsonParser, (req, res) => {
 app.get("/pokedex/list", function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
-    .collection("Pokedex")
+    .collection('Pokedex')
     .find({}) // permet de filtrer les résultats
     /*.limit(50) // pourrait permettre de limiter le nombre de résultats */
     .toArray(function (err, result) {
