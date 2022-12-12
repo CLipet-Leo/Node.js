@@ -27,9 +27,7 @@ app.listen(port, function () {
 
 /* index.js code before... */
 app.get("/pokemon/list", function (req, res) {
-    //on se connecte à la DB MongoDB
     const dbConnect = dbo.getDb();
-    //premier test permettant de récupérer mes pokemons !
     const pokemon = dbConnect.collection("Pokemon")
     const types = dbConnect.collection("types")
       pokemon.find({}) // permet de filtrer les résultats
@@ -44,10 +42,9 @@ app.get("/pokemon/list", function (req, res) {
   
 app.post('/pokemon/insert', jsonParser, (req, res) => {
   const body = req.body;
-  console.log('Got body:', body);
   const dbConnect = dbo.getDb();
   const pokemon = dbConnect.collection('Pokemon')
-  pokemon.insertOne(body)
+  pokemon.insertOne({...body})
     .then(function (err, result){
       if (err) {
         res.status(400).send(err);
@@ -72,10 +69,9 @@ app.post('/pokemon/update', jsonParser, (req, res) => {
 
 app.post('/pokemon/delete', jsonParser, (req, res) => {
   const body = req.body;
-  console.log('Got body:', body);
   const dbConnect = dbo.getDb();
   const pokemon = dbConnect.collection('Pokemon');
-  pokemon.deleteOne(body)
+  pokemon.deleteOne({...body})
   .then(function (err, result){
     if (err) {
       res.status(400).send(err);
@@ -86,9 +82,7 @@ app.post('/pokemon/delete', jsonParser, (req, res) => {
 
 /* Pokédex */
 app.get("/pokedex/list", function (req, res) {
-  //on se connecte à la DB MongoDB
   const dbConnect = dbo.getDb();
-  //premier test permettant de récupérer mes pokemons !
   dbConnect
     .collection("Pokedex")
     .find({}) // permet de filtrer les résultats
@@ -105,8 +99,8 @@ app.post('/pokedex/insert', jsonParser, (req, res) => {
   const body = req.body;
   const dbConnect = dbo.getDb();
   const pokemon = dbConnect.collection('Pokedex')
-  console.log('Added:', pokemon._id, 'to pokedex');
-  pokemon.insertOne(body)
+  console.log('Added:', body.name, 'to pokedex');
+  pokemon.insertOne({...body})
     .then(function (err, result){
       if (err) {
         res.status(400).send(err);
@@ -120,7 +114,7 @@ app.post('/pokedex/delete', jsonParser, (req, res) => {
   console.log('Got body:', body);
   const dbConnect = dbo.getDb();
   const pokemon = dbConnect.collection('Pokedex');
-  pokemon.deleteOne(body)
+  pokemon.deleteOne({...body})
   .then(function (err, result){
     if (err) {
       res.status(400).send(err);
@@ -134,7 +128,7 @@ app.post('/types/insert', jsonParser, (req, res) => {
   console.log('Got body:', body);
   const dbConnect = dbo.getDb();
   const types = dbConnect.collection('types')
-  types.insertOne(body)
+  types.insertOne({...body})
     .then(function (err, result){
       if (err) {
         res.status(400).send(err);
