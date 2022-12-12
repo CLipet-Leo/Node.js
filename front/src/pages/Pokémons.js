@@ -1,6 +1,7 @@
 import Menu from "../components/nav";
 import { useState, useEffect, } from "react";
 import { getAll, addToPokedex } from "../api/pokemon";
+import '../App.css';
 
 function Pokémons(props) {
   const [pokemons, setPokemons] = useState([]);
@@ -14,18 +15,20 @@ function Pokémons(props) {
   }, []);
 
   return <div>
-    <h1>Liste des pokémons</h1>
     <Menu />
+    <h1>Liste des pokémons</h1>
     <div className="pokemon-list">
       <div class="flex">
         {pokemons.map((pokemon, key) => {
           return <div key={key} className="bloc-pokemon">
-            {/* <img className="avatar" src={pokemon.img} /> */}
             <h2>{pokemon.name}</h2>
-            <button onClick={() => addToPokedex(pokemon)}>Capturer !</button>
+            <img class="avatar" src={pokemon.img} /><br />
+            {/* <img class="type" src={type.img} /> */}
+            <button class="ball" onClick={() => addToPokedex(pokemon) }><img class="ball" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFgeicwnl_0nvjfll3VVaEME0c_SjmsPL0bgU2wiSttw&s"}/> </button>
           </div>
         })}
       </div>
+      <br/>
     </div>
 
   </div>;
