@@ -25,7 +25,6 @@ function Admin(props) {
           </div>
         })}
       </div>
-      <br/>
     </div>
   </>;
 }

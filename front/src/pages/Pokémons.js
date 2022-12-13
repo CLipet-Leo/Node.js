@@ -19,13 +19,13 @@ function Pokémons(props) {
         {pokemons.map((pokemon, key) => {
           return <div key={key} className="bloc-pokemon">
             <h2>{pokemon.name}</h2>
+            <h3>{pokemon.types}</h3>
             <img class="avatar" src={pokemon.img} alt=""/><br />
             {/* <img class="types" src={types.img} /> */}
             <button class="ball" onClick={()=>addToPokedex(pokemon)}><img class="ball" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFgeicwnl_0nvjfll3VVaEME0c_SjmsPL0bgU2wiSttw&s"} alt=""/> </button>
           </div>
         })}
       </div>
-      <br/>
     </div>
   </>;
 }

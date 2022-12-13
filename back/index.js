@@ -47,7 +47,8 @@ app.post('/pokemon/insert', jsonParser, (req, res) => {
         res.status(400).send(err);
       } else {
         res.json(result);
-      }}.catch(err=>res.json(err)));
+      }})
+      .catch(err=>res.json(err));
 });
 
 app.post('/pokemon/update', jsonParser, (req, res) => {
@@ -104,7 +105,8 @@ app.post('/pokedex/insert', jsonParser, (req, res) => {
         res.status(400).send(err);
       } else {
         res.json(result);
-      }}.catch(err=>res.json(err)));
+      }})
+      .catch(err=>res.json(err));
 });
 
 app.post('/pokedex/delete', jsonParser, (req, res) => {
