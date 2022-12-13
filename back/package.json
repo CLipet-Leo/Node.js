@@ -14,6 +14,8 @@
     "cors": "^2.8.5",
     "create-react-app": "^5.0.1",
     "express": "^4.18.2",
-    "mongodb": "^4.12.1"
+    "mongodb": "^4.12.1",
+    "react-hook-form": "^7.40.0",
+    "react-hook-form-mui": "^5.12.0"
   }
 }

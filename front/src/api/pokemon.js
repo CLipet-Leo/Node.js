@@ -21,11 +21,26 @@ export const addToPokemon = async (pokemon) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
+        body:JSON.stringify(pokemon)
+    }
+    )
+    const pokemons = await response.json()
+    return pokemons
+}
+
+export const delPokemon = async (pokemon) => {
+    const response = await fetch(
+        'http://localhost:4444/pokemon/delete', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(pokemon)
     }
     )
-    const pokedex = await response.json()
-    return pokedex
+    const pokemons = await response.json()
+    return pokemons
 }
 
 export const getPokedex = async (pokemon) => {

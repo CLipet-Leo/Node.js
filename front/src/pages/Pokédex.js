@@ -1,6 +1,7 @@
 import Menu from "../components/nav";
 import { useState, useEffect, } from "react";
 import { getPokedex,delPokedex } from "../api/pokemon.js";
+import Button from '@mui/material/Button';
 
 function Pokédex(props) {
     const [pokedex, setPokedex] = useState([]);
@@ -13,7 +14,7 @@ function Pokédex(props) {
             .catch(error => console.error("Erreur avec notre API :", error.message));
     }, [count]);
 
-    return <>
+    return ( <>
         <Menu />
         <h1>Mon pokédex</h1>
             <div class="flex">
@@ -22,12 +23,13 @@ function Pokédex(props) {
                         <h2>{pokedex.name}</h2>
                         <h3>{pokedex.types}</h3>
                         <img className="avatar" src={pokedex.img} alt=""/><br />
-                        <button onClick={()=>{delPokedex(pokedex);setCount(count+1)}}>Supprimer !</button>
+                        <Button variant="contained" color="error" onClick={()=>{delPokedex(pokedex);setCount(count+1)}}>Supprimer !</Button>
                     </div>
                 })}
             </div>
         <br />
-    </>;
+    </>
+    );
 }
 
 export default Pokédex;

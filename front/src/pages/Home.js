@@ -1,11 +1,13 @@
 import Menu from "../components/nav";
 import "../App.css";
 
+
 function Home(props) {
-    return <div>
+    return ( <>
         <Menu />
-        <h1 class="rectangle" >Acceuil</h1>
-    </div>;
+        <h1>Acceuil</h1>
+    </>
+    );
 }
 
 
