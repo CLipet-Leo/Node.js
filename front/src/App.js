@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Pokédex from "./pages/Pokédex";
 import Pokémons from "./pages/Pokémons";
+import Admin from "./pages/Admin";
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,6 +24,9 @@ function App(props){
         </Route>
         <Route path="/pokemons"> {<Route path="pages/:id" children={<Pokémons />} />}
           <Pokémons />
+        </Route>
+        <Route path="/admin"> {<Route path="pages/:id" children={<Admin />} />}
+          <Admin />
         </Route>
       </Switch>
   </Router>
