@@ -1,4 +1,4 @@
-var cors = require('cors')
+var cors = require('cors');
 
 const express = require("express");
 const dbo = require("./db/db");
@@ -6,16 +6,11 @@ const app = express();
 const port = 4444;
 
 dbo.connectToServer();
-app.use(cors())
+app.use(cors());
 
-//insert function
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 const jsonParser = bodyParser.json();
-
-/*
-suite du code ici
-*/
 
 app.get("/", function (req, res) {
   res.send("Hello World!");
@@ -25,13 +20,14 @@ app.listen(port, function () {
   console.log(`App listening on port ${port}!`);
 });
 
-/* index.js code before... */
+/* Pokémon */
+
 app.get("/pokemon/list", function (req, res) {
     const dbConnect = dbo.getDb();
-    const pokemon = dbConnect.collection("Pokemon")
     const types = dbConnect.collection("types")
-      pokemon.find({}) // permet de filtrer les résultats
-      /*.limit(50) // pourrait permettre de limiter le nombre de résultats */
+    dbConnect
+      .collection("Pokemon")
+      .find({})
       .toArray(function (err, result) {
         if (err) {
           res.status(400).send("Error fetching pokemons!");
@@ -43,14 +39,15 @@ app.get("/pokemon/list", function (req, res) {
 app.post('/pokemon/insert', jsonParser, (req, res) => {
   const body = req.body;
   const dbConnect = dbo.getDb();
-  const pokemon = dbConnect.collection('Pokemon')
-  pokemon.insertOne({...body})
+  dbConnect
+    .collection('Pokemon')
+    .insertOne({...body})
     .then(function (err, result){
       if (err) {
         res.status(400).send(err);
       } else {
         res.json(result);
-      }});
+      }}.catch(err=>res.json(err)));
 });
 
 app.post('/pokemon/update', jsonParser, (req, res) => {
@@ -70,8 +67,9 @@ app.post('/pokemon/update', jsonParser, (req, res) => {
 app.post('/pokemon/delete', jsonParser, (req, res) => {
   const body = req.body;
   const dbConnect = dbo.getDb();
-  const pokemon = dbConnect.collection('Pokemon');
-  pokemon.deleteOne({...body})
+  dbConnect
+  .collection('Pokemon')
+  .deleteOne({...body})
   .then(function (err, result){
     if (err) {
       res.status(400).send(err);
@@ -85,8 +83,7 @@ app.get("/pokedex/list", function (req, res) {
   const dbConnect = dbo.getDb();
   dbConnect
     .collection('Pokedex')
-    .find({}) // permet de filtrer les résultats
-    /*.limit(50) // pourrait permettre de limiter le nombre de résultats */
+    .find({})
     .toArray(function (err, result) {
       if (err) {
         res.status(400).send("Error fetching pokemons!");
@@ -98,22 +95,24 @@ app.get("/pokedex/list", function (req, res) {
 app.post('/pokedex/insert', jsonParser, (req, res) => {
   const body = req.body;
   const dbConnect = dbo.getDb();
-  const pokemon = dbConnect.collection('Pokedex')
   console.log('Added:', body.name, 'to pokedex');
-  pokemon.insertOne({...body})
+  dbConnect
+    .collection('Pokedex')
+    .insertOne({...body})
     .then(function (err, result){
       if (err) {
         res.status(400).send(err);
       } else {
         res.json(result);
-      }});
+      }}.catch(err=>res.json(err)));
 });
 
 app.post('/pokedex/delete', jsonParser, (req, res) => {
   const body = req.body;
   const dbConnect = dbo.getDb();
-  const pokemon = dbConnect.collection('Pokedex');
-  pokemon.deleteOne({...body})
+  dbConnect
+  .collection('Pokedex')
+  .deleteOne({...body})
   .then(function (err, result){
     if (err) {
       res.status(400).send(err);
@@ -122,6 +121,7 @@ app.post('/pokedex/delete', jsonParser, (req, res) => {
     }});
 });
 
+/* Types */
 app.post('/types/insert', jsonParser, (req, res) => {
   const body = req.body;
   console.log('Got body:', body);

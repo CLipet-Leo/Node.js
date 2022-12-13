@@ -51,21 +51,21 @@ body {
   text-align: center;
  }
 
- ul {
+ul {
   list-style-type: none;
- }
+}
 
 .marge {
   margin: 10px 50px 20px;
 }
 
- .avatar {
+.avatar {
   width: 15%;
   border-radius: 20px;
   border-style: solid;
   border-width: 4px;
   border-color: black;
- }
+}
 
 .ball{
   width:3em; 
