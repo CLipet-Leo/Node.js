@@ -3,7 +3,7 @@ import { useState, useEffect, } from "react";
 import { getAll, addToPokemon, addToPokedex, delPokemon, updatePokemon } from "../api/pokemon";
 import { Button, Box, FormControl, OutlinedInput, InputLabel } from '@mui/material';
 import { useForm } from "react-hook-form";
-
+import {Delete} from '@mui/icons-material'
 
 
 function Admin(props) {
@@ -87,7 +87,7 @@ function Admin(props) {
                     {/* <img class="types" src={types.img} /> */}
                     <button class="ball" onClick={() => addToPokedex(pokemon)}><img class="ball" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFgeicwnl_0nvjfll3VVaEME0c_SjmsPL0bgU2wiSttw&s"} alt="" /> </button>
                     <br />
-                    <Button variant="contained" color="error" onClick={() => { delPokemon(pokemon); setCount(count + 1) }}>Supprimer !</Button>
+                    <Button variant="contained" color="error" startIcon={<Delete />} onClick={() => { delPokemon(pokemon); setCount(count + 1) }}>Supprimer !</Button>
                 </div>
             })}
         </div>

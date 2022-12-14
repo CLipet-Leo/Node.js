@@ -5,7 +5,7 @@ import "../App.css";
 function Home(props) {
     return ( <>
         <Menu />
-        <h1>Acceuil</h1>
+        <h1>Accueil</h1>
     </>
     );
 }

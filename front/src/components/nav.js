@@ -15,10 +15,14 @@ function Menu(){
               letterSpacing: '.5rem',
               textDecoration: 'none',
             }}>
-                <li><Link to="../">Acceuil</Link></li>
-                <li><Link to="../pokedex">Pokédex</Link></li>
-                <li><Link to="../pokemons">Pokémons</Link></li>
-                <li><Link to="../admin">Page de gestion</Link></li>
+              <div className='table'>
+                <ul className='no-bullets' id="horizontal-list">
+                  <li><Link to="../">Accueil</Link></li>
+                  <li><Link to="../pokedex">Pokédex</Link></li>
+                  <li><Link to="../pokemons">Pokémons</Link></li>
+                  <li><Link to="../admin">Page de gestion</Link></li>
+                </ul>
+              </div>
           </Typography>
         </Toolbar>
       </AppBar>
