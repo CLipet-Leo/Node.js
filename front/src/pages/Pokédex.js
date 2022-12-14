@@ -2,7 +2,6 @@ import Menu from "../components/nav";
 import { useState, useEffect, } from "react";
 import { getPokedex,delPokedex } from "../api/pokemon.js";
 import Button from '@mui/material/Button';
-import {Delete} from '@mui/icons-material'
 
 function Pokédex(props) {
     const [pokedex, setPokedex] = useState([]);
@@ -24,7 +23,7 @@ function Pokédex(props) {
                         <h2>{pokedex.name}</h2>
                         <h3>{pokedex.types}</h3>
                         <img className="avatar" src={pokedex.img} alt=""/><br />
-                        <Button variant="contained" color="error" startIcon={<Delete />} onClick={()=>{delPokedex(pokedex);setCount(count+1)}}>Supprimer !</Button>
+                        <Button variant="contained" color="success" onClick={()=>{delPokedex(pokedex);setCount(count+1)}}>Relacher !</Button>
                     </div>
                 })}
             </div>

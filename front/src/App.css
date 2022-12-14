@@ -39,16 +39,23 @@
 
 /* Style de notre App */
 
-/* background-image: url("https://w.wallhaven.cc/full/39/wallhaven-39x2k3.png"); */
-
 body {
-  /* background-image: url("https://w0.peakpx.com/wallpaper/946/912/HD-wallpaper-pikachu-in-a-pokeball-pokeball-anime-grey-simple-pokemon-funny-pikachu-blood.jpg");*/
   background-color: #363D3C;
+  color: white;
   text-align: center;
  }
 
 .marge {
   margin: 10px 50px 20px;
+}
+
+div.intro {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+img.accueil{
+  width: 70%;
 }
 
 .avatar {
@@ -85,7 +92,7 @@ body {
 }
 
 ul#horizontal-list {
-	min-width: 696px;
+	min-width: 100%;
 	list-style: none;
 	padding-top: 20px;
   
@@ -96,14 +103,8 @@ ul#horizontal-list {
 
   a:link, a:visited{
     color: white;
-    border: 2px solid darkred;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
   }
   
   a:hover, a:active {
-    background-color: darkred;
     color: white;
   }

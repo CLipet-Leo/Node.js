@@ -1,33 +1,49 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import { Box,AppBar,Toolbar,Typography } from '@mui/material';
+import { Box, AppBar, Toolbar, Typography, Container } from '@mui/material';
+import { Button } from '@mui/material';
+import CatchingPokemonTwoToneIcon from '@mui/icons-material/CatchingPokemonTwoTone';
 
-function Menu(){
-    return <>
-    <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="error" >
-        <Toolbar>
+const pages = ['Pokedex', 'Pokemons', 'Admin'];
+
+function Menu() {
+  return (
+    <AppBar position="static" color="error" >
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+        <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+          >
+            <CatchingPokemonTwoToneIcon fontSize="large"/>
+          </Typography>
           <Typography variant="h6" component="div" align="center" sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.5rem',
-              textDecoration: 'none',
-            }}>
-              <div className='table'>
-                <ul className='no-bullets' id="horizontal-list">
-                  <li><Link to="../">Accueil</Link></li>
-                  <li><Link to="../pokedex">Pokédex</Link></li>
-                  <li><Link to="../pokemons">Pokémons</Link></li>
-                  <li><Link to="../admin">Page de gestion</Link></li>
-                </ul>
-              </div>
+            mr: 2,
+            display: { xs: 'none', md: 'flex' },
+            fontFamily: 'monospace',
+            fontWeight: 700,
+            letterSpacing: '.5rem',
+            textDecoration: 'none',
+          }}
+          >
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pages.map((page) => (
+                <Button component={Link}
+                  key={page}
+                  Link to={"../"+String(page)}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              ))}
+            </Box>
           </Typography>
         </Toolbar>
-      </AppBar>
-    </Box>
-    </>
+      </Container>
+    </AppBar>
+  )
 }
 
 export default Menu;

@@ -24,7 +24,6 @@ app.listen(port, function () {
 
 app.get("/pokemon/list", function (req, res) {
     const dbConnect = dbo.getDb();
-    const types = dbConnect.collection("types")
     dbConnect
       .collection("Pokemon")
       .find({})
@@ -57,6 +56,20 @@ app.post('/pokemon/update', jsonParser, (req, res) => {
   const dbConnect = dbo.getDb();
   const pokemon = dbConnect.collection('Pokemon');
   const result = pokemon.updateOne({'name': body.prevname}, {$set: {'name': body.newname}});
+  result.then(function (err, result){
+    if (err) {
+      res.status(400).send(err)
+    } else {
+      res.json(result)
+    }});
+});
+
+app.post('/pokemon/imgupdate', jsonParser, (req, res) => {
+  const body = req.body;
+  console.log('Got body:', body);
+  const dbConnect = dbo.getDb();
+  const pokemon = dbConnect.collection('Pokemon');
+  const result = pokemon.updateOne({'img': body.previmg}, {$set: {'img': body.newimg}});
   result.then(function (err, result){
     if (err) {
       res.status(400).send(err)

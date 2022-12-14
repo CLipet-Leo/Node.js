@@ -37,21 +37,21 @@ function Admin(props) {
             noValidate
             autoComplete="off"
         >
-            <FormControl>
+            <FormControl color="warning">
                 <InputLabel htmlFor="component-outlined">Nom du pokémon</InputLabel>
                 <OutlinedInput {...register("name")}
                     id="component-outlined"
                     label="Nom du pokémon"
                 />
             </FormControl>
-            <FormControl >
+            <FormControl color="warning">
                 <InputLabel htmlFor="component-outlined">Image URL</InputLabel>
                 <OutlinedInput {...register("img")}
                     id="component-outlined"
                     label="Image URL"
                 />
-            </FormControl>
-            <Button type="submit">Ajouter</Button>
+            </FormControl><br/>
+            <Button variant="outlined" color="warning" type="submit">Ajouter</Button>
         </Box>
         <h2>Modifier pokémon</h2>
         <Box onSubmit={handleSubmit(upSubmit)}
@@ -62,21 +62,21 @@ function Admin(props) {
             noValidate
             autoComplete="off"
         >
-            <FormControl>
+            <FormControl color="warning">
                 <InputLabel htmlFor="component-outlined">Nom du pokémon</InputLabel>
                 <OutlinedInput {...register("prevname")}
                     id="component-outlined"
                     label="Nom du pokémon"
                 />
             </FormControl>
-            <FormControl >
+            <FormControl color="warning">
                 <InputLabel htmlFor="component-outlined">Nouveau nom</InputLabel>
                 <OutlinedInput {...register("newname")}
                     id="component-outlined"
                     label="Nouveau nom"
                 />
-            </FormControl>
-            <Button type="submit">Modifier</Button>
+            </FormControl><br/>
+            <Button variant="outlined" color="warning" type="submit">Modifier</Button>
         </Box>
         <div class="flex">
             {pokemons.map((pokemon, key) => {
