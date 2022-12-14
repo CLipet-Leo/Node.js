@@ -65,12 +65,12 @@ app.post('/pokemon/update', jsonParser, (req, res) => {
     }});
 });
 
-app.post('/pokemon/delete', jsonParser, (req, res) => {
+app.delete('/pokemon/delete', jsonParser, (req, res) => {
   const body = req.body;
   const dbConnect = dbo.getDb();
   dbConnect
   .collection('Pokemon')
-  .deleteOne({...body})
+  .deleteOne(body)
   .then(function (err, result){
     if (err) {
       res.status(400).send(err);
